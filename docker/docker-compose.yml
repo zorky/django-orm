@@ -1,0 +1,27 @@
+version: '3.1'
+services:
+  django-orm:
+    image: django-orm:latest
+    container_name: django-orm
+    command: python3 manage.py runserver 0.0.0.0:8110
+    volumes:
+    - ../djangoorm:/code
+    networks:
+    - django-orm
+
+  nginx-plateform:
+    image: nginx
+    container_name: nginx-plateform
+    restart: "no"
+    depends_on:
+      - django-orm
+    ports:
+     - 80:80
+    networks:
+     - django-orm
+    volumes:
+     - ./nginx/conf.d/plateform.conf:/etc/nginx/conf.d/plateform.conf
+     - ../log/:/var/log/nginx/
+
+networks:
+  django-orm:

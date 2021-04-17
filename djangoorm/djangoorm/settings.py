@@ -41,6 +41,8 @@ INSTALLED_APPS = [
 
 INSTALLED_APPS = INSTALLED_APPS + ['debug_toolbar', 'django_extensions', 'django_filters']
 
+INSTALLED_APPS = INSTALLED_APPS + ['todos']
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
